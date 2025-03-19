@@ -149,3 +149,13 @@ def submit_review(request, book_id):
         form = ReviewForm()
     
     return render(request, 'library/review_form.html', {'form': form, 'book': book})
+
+
+
+
+def search_books(request):
+    query = request.GET.get('q', '')
+    books = Book.objects.filter(
+        Q(title__icontains=query) | Q(author__icontains=query) | Q(genre__icontains=query)
+    )
+    return render(request, 'library/book_list.html', {'books': books, 'query': query})

@@ -11,3 +11,20 @@
         </li>
     {% endfor %}
 </ul>
+
+{% for book in books %}
+    <li>
+        <strong>{{ book.title }}</strong> by {{ book.author }} ({{ book.genre }})
+        {% if book.reviews.count > 0 %}
+            | Average Rating: {{ book.reviews.all|average_rating }}/5
+        {% endif %}
+        {% if user.is_authenticated and user.role == "student" %}
+            | <a href="{% url 'submit_review' book.id %}">Review</a>
+        {% endif %}
+    </li>
+{% endfor %}
+
+<form method="get" action="{% url 'search_books' %}">
+    <input type="text" name="q" placeholder="Search books..." value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
