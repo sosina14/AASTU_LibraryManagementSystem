@@ -3,6 +3,9 @@ from .views import register, user_login, user_logout
 
 from .views import book_list, add_book, edit_book, delete_book
 
+from .views import borrow_book, return_book
+
+
 urlpatterns = [
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
@@ -14,4 +17,10 @@ urlpatterns += [  # Keep the authentication URLs
     path('books/add/', add_book, name='add_book'),
     path('books/edit/<int:book_id>/', edit_book, name='edit_book'),
     path('books/delete/<int:book_id>/', delete_book, name='delete_book'),
+]
+
+
+urlpatterns += [
+    path('books/borrow/<int:book_id>/', borrow_book, name='borrow_book'),
+    path('books/return/<int:borrow_id>/', return_book, name='return_book'),
 ]

@@ -8,6 +8,10 @@ from .models import Book
 from .forms import BookForm
 
 
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
+from .models import BorrowedBook
+
 # User Registration
 def register(request):
     if request.method == 'POST':
@@ -86,3 +90,35 @@ def delete_book(request, book_id):
         book.delete()
         return redirect('book_list')
     return render(request, 'library/book_confirm_delete.html', {'book': book})
+
+
+
+###################
+
+
+# Borrow a book (students can borrow up to 3 books)
+@login_required
+def borrow_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    borrowed_count = BorrowedBook.objects.filter(user=request.user, returned=False).count()
+
+    if borrowed_count >= 3:
+        return HttpResponseForbidden("You can only borrow up to 3 books at a time.")
+    
+    BorrowedBook.objects.create(user=request.user, book=book)
+    book.available_copies -= 1
+    book.save()
+    
+    return redirect('book_list')
+
+# Return a book
+@login_required
+def return_book(request, borrow_id):
+    borrowed_book = get_object_or_404(BorrowedBook, id=borrow_id, user=request.user)
+    borrowed_book.returned = True
+    borrowed_book.save()
+    
+    borrowed_book.book.available_copies += 1
+    borrowed_book.book.save()
+    
+    return redirect('book_list')
