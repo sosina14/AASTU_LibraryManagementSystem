@@ -12,6 +12,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .models import BorrowedBook
 
+from .models import Review
+from .forms import ReviewForm
+
+
 # User Registration
 def register(request):
     if request.method == 'POST':
@@ -122,3 +126,26 @@ def return_book(request, borrow_id):
     borrowed_book.book.save()
     
     return redirect('book_list')
+
+
+
+#######################################
+
+
+# Submit a Review
+@login_required
+def submit_review(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.book = book
+            review.save()
+            return redirect('book_list')
+    else:
+        form = ReviewForm()
+    
+    return render(request, 'library/review_form.html', {'form': form, 'book': book})
