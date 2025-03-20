@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 
+from .models import Review
+
 from .models import Book
 
 class CustomUserCreationForm(UserCreationForm):
