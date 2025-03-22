@@ -1,5 +1,43 @@
-This is AASTU library management system django project
 
+### **Capstone Project: This is AASTU library management system django project **  
+
+This project is a Library Management System built using Django. It includes user authentication, book management, borrowing functionality, reviews, search features, and a simple frontend.
+
+### **1. Setup Project**  
+- Install Django and set up a virtual environment.  
+- Create a Django project and a library app.  
+
+### **2. User Authentication**  
+- Extend the **User Model** to include roles (**Student, Admin, Super Admin**).  
+- Implement **user registration and login** with proper views and templates.  
+- **Role-based access control**:  
+  - **Only admins and super admins** can manage books.  
+  - **Super admins** can create admins and ban students.  
+
+### **3. Book Management**  
+- Create a **Book model** with title, author, genre, and status (**available/borrowed**).  
+- Implement **CRUD operations** (list, add, edit, delete books).  
+- Restrict book management based on **user roles** using decorators.  
+
+### **4. Reviews and Ratings**  
+- Implement a **Review model** linked to books and users.  
+- Allow students to **submit reviews and ratings** for borrowed books.  
+- Display **average ratings** for books.  
+
+### **5. Search and Filters**  
+- Add a **search bar** for books by title, author, or genre.  
+- Implement **filters** for genre, author, and status.  
+
+### **6. Borrowing Books**  
+- Create a **BorrowedBook model** to track borrowed books.  
+- Allow students to **borrow up to 3 books at a time**.  
+- Implement a **return process** that updates the book status.  
+
+### **7. Frontend Development**  
+- Design **templates** for registration, login, book listings, and book details.  
+- Use **CSS for styling** and ensure a **responsive user-friendly UI**.  
+
+🚀
 
 
 by sosina Ayele
