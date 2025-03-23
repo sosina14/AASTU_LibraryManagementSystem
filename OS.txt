@@ -6,4 +6,27 @@ Process is program in the excution
 
 program is excutable file 
 
-Process 
+stack -> store temporary data (local varable , )
+heap -> allocate 
+data control -> control global varable
+
+
+type of Process
+1, seqencal => one process at a time 
+2, concurent => muliti process
+    2.1. True concurent 
+            -> uniprocusser
+            -> 
+    2.2. Apparent concurent
+            -> mulitiprocuess
+            -> 
+Process to start
+
+
+basci part Ready Running terminating 
+
+Process Tables 
+1, 
+2, i/o Table
+3, file Table
+4, 
