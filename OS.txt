@@ -1,0 +1,9 @@
+***********   CHAPTER TWO      ****************
+
+          Process and Threads
+
+Process is program in the excution
+
+program is excutable file 
+
+Process 
