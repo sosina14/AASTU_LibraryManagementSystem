@@ -1,32 +1,46 @@
 ***********   CHAPTER TWO      ****************
 
-          Process and Threads
+        Process and Threads
 
-Process is program in the excution
+Process is program in the execution.
+        is an active intitiy
 
-program is excutable file 
-
-stack -> store temporary data (local varable , )
-heap -> allocate 
-data control -> control global varable
+program is sequence of instructions defined to perform some task.
+        is a passive intity
 
 
-type of Process
-1, seqencal => one process at a time 
-2, concurent => muliti process
+
+program counter: contains the address of the next instruction to be fetched
+stack -> store temporary data (local varable , function , return data)
+heap -> is a memory dynamiclly allocate during the process run time.
+data control -> contains global varable
+
+        Type of Process
+
+1, sequential => executed sequential fasion and  at most one process is being executed
+2, concurrent => Multiprocessing
     2.1. True concurent 
-            -> uniprocusser
-            -> 
+            -> Two or more processes are executed simultaneously 
+            -> in a multiprocessor environment
+            -> Supports real parallelism
     2.2. Apparent concurent
-            -> mulitiprocuess
-            -> 
-Process to start
+            -> Two or more processes are executed in parallel 
+            -> in a uniprocessor environment by switching from one process to another
+            -> Supports pseudo parallelism
+                    i.e. the fast switching among processes gives illusion of parallelism
 
+Process to start
+    1, os system by it self
+        1.1. foreground -> user and computer
+        1.2. background -> the os system
+    2, Execution of a process creation system call by a running process.
+    3, user opening a file
+    4,Initiation of a batch job
 
 basci part Ready Running terminating 
 
 Process Tables 
-1, 
-2, i/o Table
-3, file Table
+1, Memory Table
+2, I/O Table
+3, File Table
 4, 
